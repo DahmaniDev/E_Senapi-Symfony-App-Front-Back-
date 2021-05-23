@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+<br>
+    <br>
+    <br>
+    <br>
+    <h1>Create new Post</h1>
+
+    {{ include('post/_form.html.twig') }}
+
+    <a href="{{ path('post_index') }}">back to list</a>
+{% endblock %}

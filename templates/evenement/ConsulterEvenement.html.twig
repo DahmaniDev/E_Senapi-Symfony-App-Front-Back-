@@ -1,0 +1,62 @@
+{% extends 'admin.html.twig' %}
+
+
+
+{% block body %}
+
+</br>
+    </br>
+    </br>
+    <h1>Evenement {{ evenement.titre }}</h1>
+    <img style="height:200px; width:340px" src="http://127.0.0.1/img/{{ evenement.imageEvent}}" >
+    <table  class="table">
+        <tbody>
+
+        <tr>
+            <th>Titre</th>
+            <td>{{ evenement.titre }}</td>
+        </tr>
+        <tr>
+            <th>Emplacement</th>
+            <td>{{ evenement.emplacement }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ evenement.prix }}</td>
+        </tr>
+        <tr>
+            <th>Date Evenement</th>
+            <td>{{ evenement.dateEvent }}</td>
+        </tr>
+
+        <tr>
+            <th>Fondation</th>
+            <td>{{ evenement.fondation }}</td>
+        </tr>
+        <tr>
+            <th>max participants</th>
+            <td>{{ evenement.nbmaxparticipants }}</td>
+        </tr>
+        <tr>
+            <th>Durée</th>
+            <td>{{ evenement.duree }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('afficher') }}"><button class="btn btn-primary" title="add entretien"><i class="fa fa-plus-circle"></i>Back to list</button></a>
+
+    <a href="{{ path('modifier', {'id': evenement.id}) }}"><button class="btn btn-primary" title="add entretien"><i class="fa fa-plus-circle"></i>Edit</button></a>
+
+    </br>
+    </br>
+    </br>
+    </br></br>
+    </br>
+    </br>
+
+
+
+{% endblock %}

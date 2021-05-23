@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog index{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+
+
+    <h1>Blog index</h1>
+
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+
+    <script src="{{ asset('jquery.min.js') }}"></script>
+    <input type="search" class="form-control form-control-sm" placeholder="rechercher" aria-controls="dataTables-example" id="search">
+
+    <table class="table" id="tableac">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blog in blogs %}
+            <tr>
+                <td>{{ blog.id }}</td>
+                <td>{{ blog.titre }}</td>
+                <td>{{ blog.contenu }}</td>
+                <td>
+                    <a href="{{ path('blog_show', {'id': blog.id}) }}"><button type="button" class="btn btn-success">Afficher</button></a>
+                    <a href="{{ path('blog_edit', {'id': blog.id}) }}"><button type="button" class="btn btn-info">Modifier</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        <script>
+            $(document).ready(function(){
+                $('#search').keyup(function(){
+                    search_table($(this).val());
+                });
+                function search_table(value){
+                    $('#tableac tbody tr').each(function(){
+                        var found = 'false';
+                        $(this).each(function(){
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                            {
+                                found = 'true';
+                            }
+                        });
+                        if(found == 'true')
+                        {
+                            $(this).show();
+
+                        }
+                        else
+                        {
+                            $(this).hide();
+
+                        }
+                    });
+                }
+            });
+        </script>
+        </tbody>
+    </table>
+
+    <a href="{{ path('blog_new') }}"><button type="button" class="btn btn-info">Nouveau</button></a>
+{% endblock %}

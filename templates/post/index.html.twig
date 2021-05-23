@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post index{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Post index</h1>
+
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Caption</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.caption }}</td>
+                <td>
+                    <a href="{{ path('post_show', {'id': post.id}) }}"><button type="button" class="btn btn-success">Afficher</button></a>
+                    <a href="{{ path('post_edit', {'id': post.id}) }}"><button type="button" class="btn btn-info">Modifier</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('post_new') }}"><button type="button" class="btn btn-info">Nouveau</button></a>
+{% endblock %}

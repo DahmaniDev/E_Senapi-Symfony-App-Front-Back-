@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+</br>
+    </br>
+    </br>
+    <h1>Evenement {{ evenement.titre }}</h1>
+    <img style="height:200px; width:340px" src="http://127.0.0.1/img/{{ evenement.imageEvent}}" >
+    <table  class="table">
+        <tbody>
+        <tr>
+            <th>Titre</th>
+            <td>{{ evenement.titre }}</td>
+        </tr>
+        <tr>
+            <th>Emplacement</th>
+            <td>{{ evenement.emplacement }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ evenement.prix }}</td>
+        </tr>
+        <tr>
+            <th>DateEvent</th>
+            <td>{{ evenement.dateEvent }}</td>
+        </tr>
+
+        <tr>
+            <th>Fondation</th>
+            <td>{{ evenement.fondation }}</td>
+        </tr>
+        <tr>
+            <th>Nbmaxparticipants</th>
+            <td>{{ evenement.nbmaxparticipants }}</td>
+        </tr>
+        <tr>
+            <th>Duree</th>
+            <td>{{ evenement.duree }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('parti') }}">back to list</a>
+    <a href="{{ path('abonner',{'idu':app.user.id,'id':evenement.id})  }}"><button class="btn btn-primary" title="add entretien"><i class="fa fa-plus-circle"></i> Participer  </button></a>
+
+
+
+    </br>
+    </br>
+    </br>
+    </br></br>
+    </br>
+    </br>
+    </br></br>
+    </br>
+    </br>
+    </br></br>
+    </br>
+    </br>
+    </br></br>
+    </br>
+    </br>
+    </br>
+
+{% endblock %}
